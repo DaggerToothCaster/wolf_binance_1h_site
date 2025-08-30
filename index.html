@@ -8,30 +8,6 @@
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-        // 页面加载时更新时间显示为用户本地时间
-        document.addEventListener('DOMContentLoaded', function() {
-            const utcTimeElement = document.getElementById('update-time');
-            const utcTimeStr = utcTimeElement.textContent;
-            
-            // 解析UTC时间
-            const utcTime = new Date(utcTimeStr + ' UTC');
-            
-            // 格式化为本地时间
-            const localTimeStr = utcTime.toLocaleString('zh-CN', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                timeZoneName: 'short'
-            });
-            
-            // 更新显示
-            utcTimeElement.textContent = localTimeStr;
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -44,7 +20,7 @@
     <main class="container">
         <section id="live-dashboard">
             <div class="metadata">
-                <span>最后更新时间 (UTC): <strong id="update-time">2025-08-30 13:48:28</strong></span>
+                <span>服务运行生成数据时间: <strong>2025-08-30 13:48:28</strong></span>
                 <span>数据来源: Binance (via CCXT) | 时间间隔: 1小时</span>
             </div>
                <div class="chart-wrapper">
