@@ -8,6 +8,30 @@
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        // 页面加载时更新时间显示为用户本地时间
+        document.addEventListener('DOMContentLoaded', function() {
+            const utcTimeElement = document.getElementById('update-time');
+            const utcTimeStr = utcTimeElement.textContent;
+            
+            // 解析UTC时间
+            const utcTime = new Date(utcTimeStr + ' UTC');
+            
+            // 格式化为本地时间
+            const localTimeStr = utcTime.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZoneName: 'short'
+            });
+            
+            // 更新显示
+            utcTimeElement.textContent = localTimeStr;
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -20,7 +44,7 @@
     <main class="container">
         <section id="live-dashboard">
             <div class="metadata">
-                <span>最后更新时间 (UTC): <strong id="update-time">2025-08-30 03:03:42</strong></span>
+                <span>最后更新时间 (UTC): <strong id="update-time">2025-08-30 13:48:28</strong></span>
                 <span>数据来源: Binance (via CCXT) | 时间间隔: 1小时</span>
             </div>
                <div class="chart-wrapper">
@@ -28,6 +52,29 @@
                 <p>下图显示历史价格（蓝色）和概率预测（橙色）。橙色线为多重蒙特卡洛模拟的平均值，阴影区域代表预测结果的完整范围，用于体现预测的不确定性。</p>
             </div>
 
+
+            <h2>SUIUSDT 预测</h2>
+            
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <h3>上涨概率 (未来24小时)</h3>
+                    <p class="metric-value" id="upside-prob-SUIUSDT">66.7%</p>
+                    <div class="metric-desc">模型对24小时后价格高于当前价格的信心程度。</div>
+                </div>
+                <div class="metric-card">
+                    <h3>波动性增加 (未来24小时)</h3>
+                    <p class="metric-value" id="vol-amp-prob-SUIUSDT">0.0%</p>
+                    <div class="metric-desc">未来24小时预测波动性超过近期历史波动性的概率。</div>
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <h3>24小时概率预测</h3>
+                <div class="chart-container">
+                    <img src="img\suiusdt_prediction.png" alt="SUIUSDT价格和交易量预测图表" class="chart-img">
+                </div>
+            </div>
+            <hr>
 
         </section>
     </main>
